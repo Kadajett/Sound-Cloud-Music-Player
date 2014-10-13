@@ -1,0 +1,107 @@
+<div class="row" data-ng-controller="PlayerCtrl">
+  <div >
+    <audio id="player" data-ng-init="attachPlayer()"  media-player="audio1" data-playlist="playerService.playList">
+     
+    </audio>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-sm-offset-3 col-lg-offset-3 col-md-offset-3">
+    <div class="panel panel-music">
+      <div class="panel-body panel-music-body">
+        <div class="row image-row" data-ng-if="showImage">
+            <i class="fa fa-bars pull-right text-warning   songListExit" data-ng-click="toggleSongList()"></i>
+            <img ng-src="{{playerService.playList[audio1.currentTrack - 1].originalFormat.artwork_url || playerService.playList[audio1.currentTrack - 1].originalFormat.user.avatar_url || 'http://placekitten.com/g/200/300'}}" class="img-responsive player-image" alt="Image">
+            <div class="imageOverlay" data-ng-if="playing"><img src="https://ssl.gstatic.com/play/music/fe/22388ddf6d7ed493887d6985566fed4c/ani_equalizer_black_x2.gif" class="img-responsive" alt="Image"></div>
+        </div>
+        <div class="row image-row " data-ng-if="!showImage">
+        <i class="fa fa-arrow-left songListExit" data-ng-click="toggleSongList()"></i>
+          <br />
+          <br />
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="input-group">
+                <input type="search" class="form-control" data-ng-model="search" placeholder="Search by Artist/Song">
+                <span class="input-group-addon" data-ng-click="playerService.getTracks(search)"><i class="fa fa-search"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="table-responsive">
+
+              <table class="table table-hover">
+               <thead>
+                 <tr>
+                   <th>Title</th>
+                   <th>Genre</th>
+                   <th></th>
+                 </tr>
+               </thead>
+               </table>
+
+               <div class=" songList">
+                 <table class="table table-hover">
+               
+               <tbody>
+                 <tr data-ng-repeat="song in playerService.playList" data-ng-click="audio1.play($index); ">
+                   <td>{{song.originalFormat.title}}</td>
+                   <td>{{song.originalFormat.genre}}</td>
+                   <td ><img data-ng-if="audio1.currentTrack - 1 == $index && audio1.playing" height="25px" width="25px" src="https://ssl.gstatic.com/play/music/fe/22388ddf6d7ed493887d6985566fed4c/ani_equalizer_black_x2.gif"></td>
+                 </tr>
+               </tbody>
+             </table>
+               </div>
+             
+           </div>
+            </div>
+          </div>
+           
+        </div>
+         <div class="row">
+           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+              <div class="progress progress-music">
+               <div class="progress-bar music-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{currentTime}}%;">
+
+                </div>
+                
+              </div>
+
+           </div>
+         </div>
+         <div class="row">
+           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center player-song">
+             <span>{{playerService.playList[audio1.currentTrack - 1].originalFormat.title}}</span>
+             <br />
+             <span>{{playerService.playList[audio1.currentTrack - 1].originalFormat.user.username}}</span>
+           </div>
+         </div>
+         <hr />
+         <div class="row icon-row">
+            <div data-ng-hide="volumeShow">
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 text-center player-icon">
+                
+                  <i class="fa fa-volume-off" data-ng-click="mute()"></i>
+               </div>
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center player-icon">
+                 <i class="fa fa-fast-backward" data-ng-click="prevSong()"></i>
+               </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center player-icon">
+                 <i class="fa" data-ng-class="{'fa-play':!playing, 'fa-pause':playing}" data-ng-click="pause()"></i>
+               </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center player-icon">
+                 <i class="fa fa-fast-forward" data-ng-click="nextSong()"></i>
+               </div>
+           </div>
+           <div data-ng-show="volumeShow" data-ng-hide="!volumeShow">
+             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+               <input type="range" ng-model="volume" data-ng-change="updateVolume()" min="0" max="1" step=".1" class="ng-valid ng-dirty volume-slider">
+             </div>
+           </div>
+           <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center player-icon">
+             <i class="fa fa-volume-up" data-ng-click="showVolume()"></i>
+           </div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+</div>

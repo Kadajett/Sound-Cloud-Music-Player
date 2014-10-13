@@ -1,0 +1,151 @@
+
+
+.fa{
+  cursor: pointer;
+}
+.songList{
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.songListExit{
+  z-index: 9000;
+margin-top: 10px;
+position: absolute;
+ left: 30px;
+}
+.imageOverlay{
+ position: absolute;
+top: 0%;
+left: 4%;
+font-size: 57px;
+width: 92%;
+height: 66%;
+padding-top: 10%;
+text-align: center;
+background-color: #34495e;
+opacity: 0.6;
+border-radius: 10px;
+color: #2c3e50;
+}
+.imageOverlay img{
+  width: 100%;
+}
+.panel-music{
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid grey;
+}
+.panel-music-body{
+  padding-top: 0px;
+}
+.player-image{
+  width: 100%;
+}
+.icon-row > div > .player-icon{
+  border-right: 1px solid #636060;
+}
+.icon-row :last-child{
+  border-right: none;
+}
+.player-icon{
+  
+  color: #636060;
+}
+.volume-slider{
+  width: 100%;
+}
+.image-row{
+  margin-top: 0px;
+}
+
+.progress-music{
+  height: 5px;
+  margin-top: 10px;
+  background-color: #8a8888;
+}
+.music-bar{
+  background-color:#f58271;
+}
+
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #2c3e50;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
